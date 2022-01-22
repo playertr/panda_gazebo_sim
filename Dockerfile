@@ -12,7 +12,7 @@ RUN bash -c 'source /opt/ros/kinetic/setup.bash \
 
 
 # --- Panda Gazebo Simulator ---
-FROM osrf/ros:kinetic-desktop-full AS panda_gazebo
+FROM osrf/ros:kinetic-desktop-full AS panda_gazebo_nogl
 ENV WORLD_FILE=panda.world \
     USE_GUI=true
 # install the missing dependencies and update gazebo to 7.16
@@ -34,6 +34,15 @@ RUN sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb
 COPY --from=workspace-builder /catkin_ws /catkin_ws
 COPY assets/ros_entrypoint.sh /ros_entrypoint.sh
 CMD roslaunch panda_gazebo panda.launch
+
+
+FROM nvidia/opengl:1.0-glvnd-runtime-ubuntu16.04 as nvidia
+FROM panda_gazebo_nogl as panda_gazebo
+
+COPY --from=nvidia /usr/local /usr/local
+COPY --from=nvidia /etc/ld.so.conf.d/glvnd.conf /etc/ld.so.conf.d/glvnd.conf
+
+ENV NVIDIA_VISIBLE_DEVICES=all NVIDIA_DRIVER_CAPABILITIES=all
 
 # --- simulator + python ---
 FROM panda_gazebo AS rospy3
