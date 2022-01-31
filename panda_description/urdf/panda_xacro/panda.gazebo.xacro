@@ -4,11 +4,69 @@
 
     <xacro:macro name="panda_gazebo" params="robot_name">
 
+        <!-- finger_joint1 -->
+        <gazebo reference="${robot_name}_finger_joint1">
+            <implicitSpringDamper>1</implicitSpringDamper>
+        </gazebo>
+
+        <!-- finger_joint2 -->
+        <gazebo reference="${robot_name}_finger_joint2">
+            <implicitSpringDamper>1</implicitSpringDamper>
+        </gazebo>
+
+        <!-- joint0 -->
+        <gazebo reference="${robot_name}_joint0">
+            <implicitSpringDamper>1</implicitSpringDamper>
+        </gazebo>
+
+        <!-- joint1 -->
+        <gazebo reference="${robot_name}_joint1">
+            <implicitSpringDamper>1</implicitSpringDamper>
+        </gazebo>
+
+        <!-- joint2 -->
+        <gazebo reference="${robot_name}_joint2">
+            <implicitSpringDamper>1</implicitSpringDamper>
+        </gazebo>
+
+        <!-- joint3 -->
+        <gazebo reference="${robot_name}_joint3">
+            <implicitSpringDamper>1</implicitSpringDamper>
+        </gazebo>
+
+        <!-- joint4 -->
+        <gazebo reference="${robot_name}_joint4">
+            <implicitSpringDamper>1</implicitSpringDamper>
+        </gazebo>
+
+        <!-- joint5 -->
+        <gazebo reference="${robot_name}_joint5">
+            <implicitSpringDamper>1</implicitSpringDamper>
+        </gazebo>
+
+        <!-- joint6 -->
+        <gazebo reference="${robot_name}_joint6">
+            <implicitSpringDamper>1</implicitSpringDamper>
+        </gazebo>
+
+        <!-- joint7 -->
+        <gazebo reference="${robot_name}_joint7">
+            <implicitSpringDamper>1</implicitSpringDamper>
+        </gazebo>
+
+        <!-- joint8 -->
+        <gazebo reference="${robot_name}_joint8">
+            <implicitSpringDamper>1</implicitSpringDamper>
+        </gazebo>
+
+
         <!-- Link0 -->
         <gazebo reference="${robot_name}_link0">
             <material>Gazebo/Grey</material>
             <mu1>0.2</mu1>
             <mu2>0.2</mu2>
+            <turnGravityOff>true</turnGravityOff>
+            <!-- gravity is turned off in all these links because moveit_servo + roscontrol don't have gravity compensation built in. -->
         </gazebo>
 
         <!-- Link1 -->
@@ -16,6 +74,7 @@
             <material>Gazebo/White</material>
             <mu1>0.2</mu1>
             <mu2>0.2</mu2>
+            <turnGravityOff>true</turnGravityOff>
         </gazebo>
 
         <!-- Link2 -->
@@ -23,6 +82,7 @@
             <material>Gazebo/White</material>
             <mu1>0.2</mu1>
             <mu2>0.2</mu2>
+             <turnGravityOff>true</turnGravityOff>
         </gazebo>
 
         <!-- Link3 -->
@@ -30,6 +90,7 @@
             <material>Gazebo/White</material>
             <mu1>0.2</mu1>
             <mu2>0.2</mu2>
+             <turnGravityOff>true</turnGravityOff>
         </gazebo>
 
         <!-- Link4 -->
@@ -37,6 +98,7 @@
             <material>Gazebo/White</material>
             <mu1>0.2</mu1>
             <mu2>0.2</mu2>
+             <turnGravityOff>true</turnGravityOff>
         </gazebo>
 
         <!-- Link5 -->
@@ -44,6 +106,7 @@
             <material>Gazebo/White</material>
             <mu1>0.2</mu1>
             <mu2>0.2</mu2>
+             <turnGravityOff>true</turnGravityOff>
         </gazebo>
 
         <!-- Link6 -->
@@ -51,6 +114,7 @@
             <material>Gazebo/White</material>
             <mu1>0.2</mu1>
             <mu2>0.2</mu2>
+             <turnGravityOff>true</turnGravityOff>
         </gazebo>
 
         <!-- Link7 -->
@@ -58,6 +122,7 @@
             <material>Gazebo/Grey</material>
             <mu1>0.2</mu1>
             <mu2>0.2</mu2>
+             <turnGravityOff>true</turnGravityOff>
         </gazebo>
 
         <!-- Link8 -->
@@ -65,6 +130,7 @@
             <material>Gazebo/Grey</material>
             <mu1>0.2</mu1>
             <mu2>0.2</mu2>
+             <turnGravityOff>true</turnGravityOff>
         </gazebo>
 
         <!-- LinkHand -->
@@ -72,20 +138,67 @@
             <material>Gazebo/Grey</material>
             <mu1>0.2</mu1>
             <mu2>0.2</mu2>
+            <turnGravityOff>true</turnGravityOff>
         </gazebo>
 
         <!-- LinkRightFinger -->
         <gazebo reference="${robot_name}_rightfinger">
+            <implicitSpringDamper>1</implicitSpringDamper>
             <material>Gazebo/Grey</material>
-            <mu1>0.2</mu1>
-            <mu2>0.2</mu2>
+            <mu1>5.0</mu1>
+            <mu2>5.0</mu2>
+            # from https://github.com/frankaemika/franka_ros/blob/develop/franka_description/robots/panda_gazebo.xacro
+            <kp>1e6</kp>
+            <kd>1e2</kd>
+            <minDepth>0.0</minDepth>
+            <maxVel>0.0</maxVel>
+            <torsional>
+                <ode>
+                    <coefficient>1000</coefficient>
+                    <slip>0</slip>
+                </ode>
+            </torsional>
+            <physics>
+                <max_contacts>20</max_contacts>
+                <ode>
+                <limit>
+                    <cfm>0</cfm>
+                    <erp>0.2</erp>
+                </limit>
+                <implicit_spring_damper>1</implicit_spring_damper>
+                </ode>
+            </physics>
+            <turnGravityOff>true</turnGravityOff>
         </gazebo>
 
         <!-- LinkLeftFinger -->
         <gazebo reference="${robot_name}_leftfinger">
             <material>Gazebo/Grey</material>
-            <mu1>0.2</mu1>
-            <mu2>0.2</mu2>
+            <implicitSpringDamper>1</implicitSpringDamper>
+            <mu1>5.0</mu1>
+            <mu2>5.0</mu2>
+            # from https://github.com/frankaemika/franka_ros/blob/develop/franka_description/robots/panda_gazebo.xacro
+            <kp>1e6</kp>
+            <kd>1e2</kd>
+            <minDepth>0.0</minDepth>
+            <maxVel>0.0</maxVel>
+            <torsional>
+                <ode>
+                    <coefficient>1000</coefficient>
+                    <slip>0</slip>
+                </ode>
+            </torsional>
+            <physics>
+                <max_contacts>20</max_contacts>
+                <ode>
+                <limit>
+                    <cfm>0</cfm>
+                    <erp>0.2</erp>
+                </limit>
+                <implicit_spring_damper>1</implicit_spring_damper>
+                </ode>
+            </physics>
+            <turnGravityOff>true</turnGravityOff>
         </gazebo>
 
     </xacro:macro>

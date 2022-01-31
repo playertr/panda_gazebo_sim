@@ -4,13 +4,16 @@
   <xacro:property name="joint_damping" value="1.0"/>
   <!-- END Gazebo adaptation-->
 
-  <xacro:macro name="panda_arm" params="arm_id:='panda' description_pkg:='panda_description' connected_to:='' xyz:='0 0 0' rpy:='0 0 0'">
+  <xacro:arg name="xyz" default="0 0 0" />
+  <xacro:arg name="rpy" default="0 0 0" />
+
+  <xacro:macro name="panda_arm" params="arm_id:='panda' description_pkg:='panda_description' connected_to:=''">
     <!-- Gazebo adaptation: Attach Robot rigidly to the world frame in Gazebo -->
     <link name="world" />
     <joint name="robot_to_world" type="fixed">
       <parent link="world" />
       <child link="${arm_id}_link0" />
-      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <origin xyz="$(arg xyz)" rpy="$(arg rpy)" />
       <!-- Gazebo adaptation: dampening-->
       <dynamics damping="${joint_damping}"/>
       <!-- END Gazebo adaptation-->

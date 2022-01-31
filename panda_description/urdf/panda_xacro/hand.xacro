@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="hand">
   <!-- Gazebo adaptation: dynamics (dampening)-->
-  <xacro:property name="joint_damping" value="1.0"/>
+  <xacro:property name="joint_damping" value="5.0"/>
+  <xacro:property name="gripper_joint_friction" value="100.0"/>
   <!-- END Gazebo adaptation-->
 
   <xacro:macro name="hand" params="description_pkg:='panda' connected_to:='' ns:='' rpy:='0 0 0' xyz:='0 0 0' ">
@@ -79,9 +80,9 @@
       <child link="${ns}_leftfinger"/>
       <origin xyz="0 0 0.0584" rpy="0 0 0"/>
       <axis xyz="0 1 0"/>
-      <limit effort="20" lower="0.0" upper="0.04" velocity="0.2"/>
+      <limit effort="100" lower="0.0" upper="0.04" velocity="0.2"/>
       <!-- Gazebo adaptation: dampening-->
-      <dynamics damping="${joint_damping}"/>
+      <dynamics damping="${joint_damping}" friction="${gripper_joint_friction}"/>
       <!-- END Gazebo adaptation-->
     </joint>
     <joint name="${ns}_finger_joint2" type="prismatic">
@@ -89,9 +90,9 @@
       <child link="${ns}_rightfinger"/>
       <origin xyz="0 0 0.0584" rpy="0 0 0"/>
       <axis xyz="0 -1 0"/>
-      <limit effort="20" lower="0.0" upper="0.04" velocity="0.2"/>
+      <limit effort="100" lower="0.0" upper="0.04" velocity="0.2"/>
       <!-- Gazebo adaptation: dampening-->
-      <dynamics damping="${joint_damping}"/>
+      <dynamics damping="${joint_damping}" friction="${gripper_joint_friction}"/>
       <!-- END Gazebo adaptation-->
     </joint>
   </xacro:macro>
