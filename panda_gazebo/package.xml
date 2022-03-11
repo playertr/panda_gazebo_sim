@@ -30,7 +30,7 @@
   <exec_depend>gazebo_ros</exec_depend>
   <exec_depend>ros_control</exec_depend>
   <exec_depend>gazebo_ros_control</exec_depend>
-  <exec_depend>effort_ controllers</exec_depend>
+  <exec_depend>effort_controllers</exec_depend>
   <exec_depend>joint_trajectory_controller</exec_depend>
   <exec_depend>moveit</exec_depend>
   <buildtool_depend>catkin</buildtool_depend>
