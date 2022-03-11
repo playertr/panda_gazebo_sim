@@ -150,7 +150,7 @@
             # from https://github.com/frankaemika/franka_ros/blob/develop/franka_description/robots/panda_gazebo.xacro
             <kp>1e6</kp>
             <kd>1e2</kd>
-            <minDepth>0.0</minDepth>
+            <minDepth>0.0001</minDepth>
             <maxVel>0.0</maxVel>
             <torsional>
                 <ode>
@@ -162,7 +162,7 @@
                 <max_contacts>20</max_contacts>
                 <ode>
                 <limit>
-                    <cfm>0</cfm>
+                    <cfm>0.00000017</cfm>
                     <erp>0.2</erp>
                 </limit>
                 <implicit_spring_damper>1</implicit_spring_damper>
@@ -180,7 +180,7 @@
             # from https://github.com/frankaemika/franka_ros/blob/develop/franka_description/robots/panda_gazebo.xacro
             <kp>1e6</kp>
             <kd>1e2</kd>
-            <minDepth>0.0</minDepth>
+            <minDepth>0.0001</minDepth>
             <maxVel>0.0</maxVel>
             <torsional>
                 <ode>
@@ -192,7 +192,7 @@
                 <max_contacts>20</max_contacts>
                 <ode>
                 <limit>
-                    <cfm>0</cfm>
+                    <cfm>0.00000017</cfm>
                     <erp>0.2</erp>
                 </limit>
                 <implicit_spring_damper>1</implicit_spring_damper>
