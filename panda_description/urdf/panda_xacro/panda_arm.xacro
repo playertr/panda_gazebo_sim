@@ -73,7 +73,7 @@
       <parent link="${arm_id}_link0"/>
       <child link="${arm_id}_link1"/>
       <axis xyz="0 0 1"/>
-      <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+      <limit effort="870" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
       <!-- Gazebo adaptation: dampening-->
       <dynamics damping="${joint_damping}"/>
       <!-- END Gazebo adaptation-->
@@ -103,7 +103,7 @@
       <parent link="${arm_id}_link1"/>
       <child link="${arm_id}_link2"/>
       <axis xyz="0 0 1"/>
-      <limit effort="87" lower="-1.7628" upper="1.7628" velocity="2.1750"/>
+      <limit effort="870" lower="-1.7628" upper="1.7628" velocity="2.1750"/>
       <!-- Gazebo adaptation: dampening-->
       <dynamics damping="${joint_damping}"/>
       <!-- END Gazebo adaptation-->
@@ -133,7 +133,7 @@
       <parent link="${arm_id}_link2"/>
       <child link="${arm_id}_link3"/>
       <axis xyz="0 0 1"/>
-      <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+      <limit effort="870" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
       <!-- Gazebo adaptation: dampening-->
       <dynamics damping="${joint_damping}"/>
       <!-- END Gazebo adaptation-->
@@ -163,7 +163,7 @@
       <parent link="${arm_id}_link3"/>
       <child link="${arm_id}_link4"/>
       <axis xyz="0 0 1"/>
-      <limit effort="87" lower="-3.0718" upper="-0.0698" velocity="2.1750"/>
+      <limit effort="870" lower="-3.0718" upper="-0.0698" velocity="2.1750"/>
       <!-- Gazebo adaptation: dampening-->
       <dynamics damping="${joint_damping}"/>
       <!-- END Gazebo adaptation-->
